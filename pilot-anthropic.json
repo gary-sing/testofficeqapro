@@ -1,0 +1,33 @@
+{
+  "description": "OfficeQA Pro first 10 questions; reference-document lexical retrieval; 1% tolerance",
+  "prompts": [
+    "Answer the financial question using the supplied document excerpts. Compute carefully. Return only the final answer, with its units. If the excerpts are insufficient, say insufficient evidence.\n\nQuestion: {{question}}\n\nExcerpts:\n{{context}}"
+  ],
+  "providers": [
+    {
+      "id": "file://budget-provider.mjs",
+      "label": "claude-opus-4-8",
+      "config": {
+        "model": "claude-opus-4-8",
+        "vendor": "anthropic",
+        "inputRate": 5,
+        "outputRate": 25
+      }
+    },
+    {
+      "id": "file://budget-provider.mjs",
+      "label": "claude-fable-5",
+      "config": {
+        "model": "claude-fable-5",
+        "vendor": "anthropic",
+        "inputRate": 10,
+        "outputRate": 50
+      }
+    }
+  ],
+  "tests": "file://data/pilot-tests.json",
+  "evaluateOptions": {
+    "maxConcurrency": 1,
+    "cache": false
+  }
+}
